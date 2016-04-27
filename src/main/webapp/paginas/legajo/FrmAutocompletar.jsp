@@ -45,19 +45,68 @@
 			<input id="countries" style="width: 100%;" />
 
 		</div>
-
+		<div id="grid"></div>
 
 		<script>
-			$(document).ready(function() {
+			$(document)
+					.ready(
+							function() {
 
-				$("#countries").kendoAutoComplete({
-					dataTextField : "name",
-					minLength : 2,
-					dataSource : cargarLista("/listCountry")
+								$("#countries").kendoAutoComplete({
+									dataTextField : "name",
+									minLength : 2,
+									select : seleccionado,
+									dataSource : cargarLista("/listCountry")
 
-				});
+								});
+								function seleccionado(context) {
+									var state = this.dataItem(context.item
+											.index());
+									//alert(state.countryId);
+									$("#grid")
+											.kendoGrid(
+													{
+														sortable : true,
+														groupable : true,
+														scrollable : true,
+														dataSource : {
+															transport : {
+																read : {
+																	url : "http://192.168.1.153:8040/DemoKendoUiHibernate/demokendo/empleado/listState",
+																	data : {
+																		countryId : state.countryId
+																	},
+																	dataType : "json",
+																	type : "POST",
+																	contentType : "application/json"
+																},
+																parameterMap : function(
+																		data) {
+																	return JSON
+																			.stringify(data);
 
-			});
+																}
+															},
+															pageSize : 50
+														},
+														height : 400,
+														filterable : true,
+														sortable : true,
+														pageable : true,
+														columns : [ {
+															field : "stateId",
+															title : "ID",
+															filterable : false
+														}, {
+															field : "name",
+															title : "NAME"
+
+														} ]
+													});
+
+								}
+
+							});
 		</script>
 
 
