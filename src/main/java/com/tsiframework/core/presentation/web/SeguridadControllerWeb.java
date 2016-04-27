@@ -16,9 +16,10 @@ public class SeguridadControllerWeb {
 		System.out.println("ENTRA SEGURIDAD");
 		
 		//return "Principal"; 
+		return new ModelAndView("legajo/FrmAutocompletar",model); 
 		//return new ModelAndView("legajo/FrmPrueba",model); 
 		//return new ModelAndView("legajo/ListarCrudEmpleado",model); 
-		return new ModelAndView("legajo/ListarCrudEmpleado3",model); 
+		//return new ModelAndView("legajo/ListarCrudEmpleado3",model); 
 	}	
 
 }

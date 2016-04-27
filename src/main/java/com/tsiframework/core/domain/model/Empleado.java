@@ -44,6 +44,13 @@ public class Empleado implements Serializable {
 		this.nombre = nombre;
 	}
 	
+	/*
+	public String toString() {
+		return "{idEmpleado:" + idEmpleado + ", apellidoPaterno:" + apellidoPaterno + ", apellidoMaterno:"
+				+ apellidoMaterno + ", nombre:" + nombre + "}";
+	}
+	*/
+	
 	
 	
 

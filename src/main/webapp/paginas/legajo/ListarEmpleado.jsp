@@ -40,11 +40,7 @@
                                 }
                             },
                     		pageSize: 20
-                    		/*,                            
-                            pageSize: 20,
-                            serverPaging: true,
-                            serverFiltering: true
-                            */
+                    		
                            
                         },
                         height: 550,
