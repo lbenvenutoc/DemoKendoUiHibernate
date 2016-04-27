@@ -1,5 +1,5 @@
 function cargarLista(accionParam) {
-	var crudServiceBaseUrl = "http://192.168.1.153:8040/DemoKendoUi/demokendo/empleado";
+	var crudServiceBaseUrl = "http://192.168.1.153:8040/DemoKendoUiHibernate/demokendo/empleado";
 	var datasourceDs = new kendo.data.DataSource({
 		transport : {
 			read : {

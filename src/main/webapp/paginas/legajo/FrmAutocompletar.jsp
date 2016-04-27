@@ -41,77 +41,23 @@
 
 	<div id="exampleAutocompletar">
 		<div class="demo-section k-content">
-			<h4>Seleccionar Departamentos</h4>
-			<input id="departamentos" style="width: 100%;" />
+			<h4>Select Country</h4>
+			<input id="countries" style="width: 100%;" />
 
 		</div>
-		<div id="grid"></div>
+
 
 		<script>
-			$(document)
-					.ready(
-							function() {
+			$(document).ready(function() {
 
-								$("#departamentos")
-										.kendoAutoComplete(
-												{
-													dataTextField : "nombre",
-													minLength : 2,
-													select : seleccionado,
+				$("#countries").kendoAutoComplete({
+					dataTextField : "name",
+					minLength : 2,
+					dataSource : cargarLista("/listCountry")
 
-													dataSource : cargarLista("/listarDepartamento")
+				});
 
-												});
-								function seleccionado(context) {
-									var departamento = this
-											.dataItem(context.item.index());
-									//alert(departamento.idDepartamento);
-									$("#grid")
-											.kendoGrid(
-													{
-														sortable : true,
-														groupable : true,
-														scrollable : true,
-														dataSource : {
-															transport : {
-																read : {																	
-																	url : "http://192.168.1.153:8040/DemoKendoUi/demokendo/empleado/cargarProvincia",
-																	data : {
-																		idDepartamento : departamento.idDepartamento
-																	},
-																	dataType : "json",
-																	type : "POST",
-																	contentType : "application/json"
-																},
-																parameterMap : function(
-																		data) {
-																	return JSON
-																			.stringify(data);
-
-																}
-															},
-															pageSize : 2
-														},
-														height : 100,
-														filterable : true,
-														sortable : true,
-														pageable : true,
-														columns : [
-																{
-																	field : "idProvincia",
-																	title : "Codigo",
-																	filterable : false
-																},
-																{
-																	field : "nombre",
-																	title : "Provincia"
-
-																} ]
-													});
-
-								}
-
-							});
+			});
 		</script>
 
 
